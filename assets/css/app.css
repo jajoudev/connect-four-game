@@ -1,0 +1,238 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #7945ff;
+}
+
+.main-wrapper {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.game-board {
+    position: relative;
+}
+
+
+.game-circle {
+    position: absolute;
+}
+
+.game-circle[data-x="0"][data-y="0"] {
+    top: 14px;
+    left: 18px;
+    cursor: pointer;
+}
+
+.game-circle[data-x="1"][data-y="0"] {
+    top: 14px;
+    left: 106px;
+    cursor: pointer;
+}
+
+.game-circle[data-x="2"][data-y="0"] {
+    top: 14px;
+    left: 194px;
+    cursor: pointer;
+}
+
+.game-circle[data-x="3"][data-y="0"] {
+    top: 14px;
+    left: 280px;
+    cursor: pointer;
+}
+
+.game-circle[data-x="4"][data-y="0"] {
+    top: 14px;
+    left: 370px;
+}
+
+.game-circle[data-x="5"][data-y="0"] {
+    top: 14px;
+    left: 458px;
+}
+
+.game-circle[data-x="6"][data-y="0"] {
+    top: 14px;
+    left: 546px;
+}
+
+.game-circle[data-x="0"][data-y="1"] {
+    top: 100px;
+    left: 16px; 
+}
+
+.game-circle[data-x="1"][data-y="1"] {
+    top: 100px;
+    left: 104px; 
+}
+
+.game-circle[data-x="2"][data-y="1"] {
+    top: 100px;
+    left: 192px; 
+}
+
+.game-circle[data-x="3"][data-y="1"] {
+    top: 100px;
+    left: 280px; 
+}
+
+.game-circle[data-x="4"][data-y="1"] {
+    top: 100px;
+    left: 370px; 
+}
+
+.game-circle[data-x="5"][data-y="1"] {
+    top: 100px;
+    left: 458px; 
+}
+
+.game-circle[data-x="6"][data-y="1"] {
+    top: 100px;
+    left: 546px; 
+}
+
+.game-circle[data-x="0"][data-y="2"] {
+    top: 188px;
+    left: 16px; 
+}
+
+.game-circle[data-x="1"][data-y="2"] {
+    top: 188px;
+    left: 104px;
+}
+
+.game-circle[data-x="2"][data-y="2"] {
+    top: 188px;
+    left: 192px; 
+}
+
+.game-circle[data-x="3"][data-y="2"] {
+    top: 188px;
+    left: 280px; 
+}
+
+.game-circle[data-x="4"][data-y="2"] {
+    top: 188px;
+    left: 370px; 
+}
+
+.game-circle[data-x="5"][data-y="2"] {
+    top: 188px;
+    left: 458px; 
+}
+
+.game-circle[data-x="6"][data-y="2"] {
+    top: 188px;
+    left: 546px; 
+}
+
+.game-circle[data-x="0"][data-y="3"] {
+    top: 276px;
+    left: 16px; 
+}
+
+.game-circle[data-x="1"][data-y="3"] {
+    top: 276px;
+    left: 104px; 
+}
+
+.game-circle[data-x="2"][data-y="3"] {
+    top: 276px;
+    left: 192px; 
+}
+
+.game-circle[data-x="3"][data-y="3"] {
+    top: 276px;
+    left: 280px; 
+}
+
+.game-circle[data-x="4"][data-y="3"] {
+    top: 276px;
+    left: 370px; 
+}
+
+.game-circle[data-x="5"][data-y="3"] {
+    top: 276px;
+    left: 458px; 
+}
+
+.game-circle[data-x="6"][data-y="3"] {
+    top: 276px;
+    left: 546px; 
+}
+
+.game-circle[data-x="0"][data-y="4"] {
+    top: 364px;
+    left: 16px; 
+}
+
+.game-circle[data-x="1"][data-y="4"] {
+    top: 364px;
+    left: 104px; 
+}
+
+.game-circle[data-x="2"][data-y="4"] {
+    top: 364px;
+    left: 192px; 
+}
+
+.game-circle[data-x="3"][data-y="4"] {
+    top: 364px;
+    left: 280px; 
+}
+
+.game-circle[data-x="4"][data-y="4"] {
+    top: 364px;
+    left: 370px; 
+}
+
+.game-circle[data-x="5"][data-y="4"] {
+    top: 364px;
+    left: 456px; 
+}
+
+.game-circle[data-x="6"][data-y="4"] {
+    top: 364px;
+    left: 546px; 
+}
+
+.game-circle[data-x="0"][data-y="5"] {
+    top: 452px;
+    left: 16px; 
+}
+
+.game-circle[data-x="1"][data-y="5"] {
+    top: 452px;
+    left: 104px; 
+}
+
+.game-circle[data-x="2"][data-y="5"] {
+    top: 452px;
+    left: 192px; 
+}
+
+.game-circle[data-x="3"][data-y="5"] {
+    top: 452px;
+    left: 280px; 
+}
+
+.game-circle[data-x="4"][data-y="5"] {
+    top: 452px;
+    left: 370px; 
+}
+
+.game-circle[data-x="5"][data-y="5"] {
+    top: 452px;
+    left: 456px; 
+}
+
+.game-circle[data-x="6"][data-y="5"] {
+    top: 452px;
+    left: 546px; 
+}
