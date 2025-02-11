@@ -1,12 +1,13 @@
-const $gameCirclesCells = document.querySelectorAll(".game-circle");
+const $gameCirclesCells = document.querySelectorAll(".game-cell");
 const $gameBoard = document.querySelector(".game-board");
+
 const $gameIconPlayer = document.querySelector(".icon-player");
+
 console.log($gameBoard);
 console.log($gameCirclesCells);
 
 let currentPlayer = "red";
 let gameBoard = [
-  ["", "", "", "", "", "", ""],
   ["", "", "", "", "", "", ""],
   ["", "", "", "", "", "", ""],
   ["", "", "", "", "", "", ""],
@@ -61,25 +62,45 @@ const redPlayer = `
     </g>
 </svg>`;
 
-console.log(redPlayer);
-console.log(yellowPlayer);
-
 function resetGameGrid() {
-  $gameCirclesCells.forEach(($resetCircles) => {
-    $resetCircles.innerHTML = "";
+  $gameCirclesCells.forEach(($resetCells) => {
+    $resetCells.innerHTML = "";
   });
 }
 
 resetGameGrid();
 
-document.addEventListener("DOMContentLoaded", () => {
+$gameCirclesCells.forEach(($gameCell) => {
+  $gameCell.addEventListener("click", () => {
+    const dataX = $gameCell.getAttribute("data-x");
 
-  console.log("Game circles after DOM load:", $gameCirclesCells.length);
+    for (let i = 5; i >= 0; i--) {
+      if (gameBoard[i][dataX] === "") {
+        console.log("C'est vide");
+        gameBoard[i][dataX] = currentPlayer;
 
-  $gameCirclesCells.forEach(($gameCell) => {
-    $gameCell.addEventListener("click", () => {
-      console.log($gameCell);
-      console.log($gameIconPlayer);
-    });
+        if (currentPlayer === "red") {
+          const selectedGameCell = document.querySelector(`.game-cell[data-y="${i}"][data-x="${dataX}"]`)
+          selectedGameCell.innerHTML = redPlayer
+          currentPlayer = "yellow";
+        } else {
+          const selectedGameCell = document.querySelector(`.game-cell[data-y="${i}"][data-x="${dataX}"]`)
+          selectedGameCell.innerHTML = yellowPlayer
+
+          currentPlayer = "red";
+        }
+
+        return;
+      } else {
+        console.log("Ce n'est pas vide");
+      }
+    }
+
+    // gameBoard[dataX][dataY] = currentPlayer;
+    // console.log(gameBoard);
+
+    // if ($gameCell.hasChildNodes() === false) {
+
+    // }
   });
 });
