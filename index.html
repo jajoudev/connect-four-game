@@ -10,153 +10,206 @@
   </head>
   <body>
     <main class="main-wrapper">
+      <div class="main-menu">
+        <img src="assets/images/logo.svg" alt="logo" />
+
+        <ul class="main-menu-buttons">
+          <div class="player-cpu-button game-button">
+            <li class="player-cpu">Player vs Cpu</li>
+            <img src="assets/images/player-vs-cpu.svg" alt="" />
+          </div>
+          <div class="player-player-button game-button">
+            <li class="player-player">Player vs Player</li>
+            <img src="assets/images/player-vs-player.svg" />
+          </div>
+          <div class="game-rules-button">
+            <li class="game-rules">Game Rules</li>
+          </div>
+        </ul>
+      </div>
+      <div class="game-rules-wrapper hidden">
+        <h1 class="game-rules-title">Rules</h1>
+        <div class="game-rules-context">
+          <div class="game-rules-objective">
+            <h2 class="game-rules-second-title">Objective</h2>
+            <p class="game-rules-description">
+              Be the first player to connect 4 of the same colored discs in a
+              row (either vertically, horizontally, or diagonally).
+            </p>
+          </div>
+          <div class="how-to-play">
+            <h2 class="game-rules-second-title">How to play</h2>
+            <ol class="game-rules-list">
+              <li>Red goes first in the first game.</li>
+              <li>
+                Players must alternate turns, and only one disc can be dropped
+                in each turn.
+              </li>
+              <li>The game ends when there is a 4-in-a-row or a stalemate.</li>
+              <li>
+                The starter of the previous game goes second on <br />
+                the next game.
+              </li>
+            </ol>
+            <img class="icon-check" src="assets/images/icon-check.svg" alt="" />
+          </div>
+        </div>
+      </div>
+      <div class="game-board-wrapper hidden">
+        <div class="game-board-navigation">
+          <ul>
+            <li class="menu">Menu</li>
+            <li><img src="assets/images/logo.svg" alt="" /></li>
+            <li class="restart">Restart</li>
+          </ul>
+        </div>
         <div class="game-board">
-          <img src="./assets/images/board-layer-white-large.svg" alt="">
-          <img class="game-board-black" src="./assets/images/board-layer-black-large.svg" alt="">          
-          
+          <img src="./assets/images/board-layer-white-large.svg" alt="" />
+          <img
+            class="game-board-black"
+            src="./assets/images/board-layer-black-large.svg"
+            alt=""
+          />
+
           <!-- First row -->
           <div class="game-cell" data-x="0" data-y="0">
-            <img src="./assets/counter-red-large.svg" alt="">
+            <img src="./assets/counter-red-large.svg" alt="" />
           </div>
           <div class="game-cell" data-x="1" data-y="0">
-            <img src="./assets/counter-red-large.svg" alt="">
+            <img src="./assets/counter-red-large.svg" alt="" />
           </div>
           <div class="game-cell" data-x="2" data-y="0">
-            <img src="./assets/counter-red-large.svg" alt="">
+            <img src="./assets/counter-red-large.svg" alt="" />
           </div>
           <div class="game-cell" data-x="3" data-y="0">
-            <img src="./assets/counter-red-large.svg" alt="">
+            <img src="./assets/counter-red-large.svg" alt="" />
           </div>
           <div class="game-cell" data-x="4" data-y="0">
-            <img src="./assets/counter-red-large.svg" alt="">
+            <img src="./assets/counter-red-large.svg" alt="" />
           </div>
           <div class="game-cell" data-x="5" data-y="0">
-            <img src="./assets/counter-red-large.svg" alt="">
+            <img src="./assets/counter-red-large.svg" alt="" />
           </div>
           <div class="game-cell" data-x="6" data-y="0">
-            <img src="./assets/counter-red-large.svg" alt="">
+            <img src="./assets/counter-red-large.svg" alt="" />
           </div>
-
 
           <!-- Second row -->
           <div class="game-cell" data-x="0" data-y="1">
-            <img src="./assets/counter-red-large.svg" alt="">
+            <img src="./assets/counter-red-large.svg" alt="" />
           </div>
           <div class="game-cell" data-x="1" data-y="1">
-            <img src="./assets/counter-red-large.svg" alt="">
+            <img src="./assets/counter-red-large.svg" alt="" />
           </div>
           <div class="game-cell" data-x="2" data-y="1">
-            <img src="./assets/counter-red-large.svg" alt="">
+            <img src="./assets/counter-red-large.svg" alt="" />
           </div>
           <div class="game-cell" data-x="3" data-y="1">
-            <img src="./assets/counter-red-large.svg" alt="">
+            <img src="./assets/counter-red-large.svg" alt="" />
           </div>
           <div class="game-cell" data-x="4" data-y="1">
-            <img src="./assets/counter-red-large.svg" alt="">
+            <img src="./assets/counter-red-large.svg" alt="" />
           </div>
           <div class="game-cell" data-x="5" data-y="1">
-            <img src="./assets/counter-red-large.svg" alt="">
+            <img src="./assets/counter-red-large.svg" alt="" />
           </div>
           <div class="game-cell" data-x="6" data-y="1">
-            <img src="./assets/counter-red-large.svg" alt="">
+            <img src="./assets/counter-red-large.svg" alt="" />
           </div>
-
 
           <!-- Third row -->
           <div class="game-cell" data-x="0" data-y="2">
-            <img src="./assets/counter-red-large.svg" alt="">
+            <img src="./assets/counter-red-large.svg" alt="" />
           </div>
           <div class="game-cell" data-x="1" data-y="2">
-            <img src="./assets/counter-red-large.svg" alt="">
+            <img src="./assets/counter-red-large.svg" alt="" />
           </div>
           <div class="game-cell" data-x="2" data-y="2">
-            <img src="./assets/counter-red-large.svg" alt="">
+            <img src="./assets/counter-red-large.svg" alt="" />
           </div>
           <div class="game-cell" data-x="3" data-y="2">
-            <img src="./assets/counter-red-large.svg" alt="">
+            <img src="./assets/counter-red-large.svg" alt="" />
           </div>
           <div class="game-cell" data-x="4" data-y="2">
-            <img src="./assets/counter-red-large.svg" alt="">
+            <img src="./assets/counter-red-large.svg" alt="" />
           </div>
           <div class="game-cell" data-x="5" data-y="2">
-            <img src="./assets/counter-red-large.svg" alt="">
+            <img src="./assets/counter-red-large.svg" alt="" />
           </div>
           <div class="game-cell" data-x="6" data-y="2">
-            <img src="./assets/counter-red-large.svg" alt="">
+            <img src="./assets/counter-red-large.svg" alt="" />
           </div>
-
 
           <!-- Fourth row -->
           <div class="game-cell" data-x="0" data-y="3">
-            <img src="./assets/counter-red-large.svg" alt="">
+            <img src="./assets/counter-red-large.svg" alt="" />
           </div>
           <div class="game-cell" data-x="1" data-y="3">
-            <img src="./assets/counter-red-large.svg" alt="">
+            <img src="./assets/counter-red-large.svg" alt="" />
           </div>
           <div class="game-cell" data-x="2" data-y="3">
-            <img src="./assets/counter-red-large.svg" alt="">
+            <img src="./assets/counter-red-large.svg" alt="" />
           </div>
           <div class="game-cell" data-x="3" data-y="3">
-            <img src="./assets/counter-red-large.svg" alt="">
+            <img src="./assets/counter-red-large.svg" alt="" />
           </div>
           <div class="game-cell" data-x="4" data-y="3">
-            <img src="./assets/counter-red-large.svg" alt="">
+            <img src="./assets/counter-red-large.svg" alt="" />
           </div>
           <div class="game-cell" data-x="5" data-y="3">
-            <img src="./assets/counter-red-large.svg" alt="">
+            <img src="./assets/counter-red-large.svg" alt="" />
           </div>
           <div class="game-cell" data-x="6" data-y="3">
-            <img src="./assets/counter-red-large.svg" alt="">
+            <img src="./assets/counter-red-large.svg" alt="" />
           </div>
-
 
           <!-- Fifth row -->
           <div class="game-cell" data-x="0" data-y="4">
-            <img src="./assets/counter-red-large.svg" alt="">
+            <img src="./assets/counter-red-large.svg" alt="" />
           </div>
           <div class="game-cell" data-x="1" data-y="4">
-            <img src="./assets/counter-red-large.svg" alt="">
+            <img src="./assets/counter-red-large.svg" alt="" />
           </div>
           <div class="game-cell" data-x="2" data-y="4">
-            <img src="./assets/counter-red-large.svg" alt="">
+            <img src="./assets/counter-red-large.svg" alt="" />
           </div>
           <div class="game-cell" data-x="3" data-y="4">
-            <img src="./assets/counter-red-large.svg" alt="">
+            <img src="./assets/counter-red-large.svg" alt="" />
           </div>
           <div class="game-cell" data-x="4" data-y="4">
-            <img src="./assets/counter-red-large.svg" alt="">
+            <img src="./assets/counter-red-large.svg" alt="" />
           </div>
           <div class="game-cell" data-x="5" data-y="4">
-            <img src="./assets/counter-red-large.svg" alt="">
+            <img src="./assets/counter-red-large.svg" alt="" />
           </div>
           <div class="game-cell" data-x="6" data-y="4">
-            <img src="./assets/counter-red-large.svg" alt="">
+            <img src="./assets/counter-red-large.svg" alt="" />
           </div>
-
 
           <!-- Sixth row -->
           <div class="game-cell" data-x="0" data-y="5">
-            <img src="./assets/counter-red-large.svg" alt="">
+            <img src="./assets/counter-red-large.svg" alt="" />
           </div>
           <div class="game-cell" data-x="1" data-y="5">
-            <img src="./assets/counter-red-large.svg" alt="">
+            <img src="./assets/counter-red-large.svg" alt="" />
           </div>
           <div class="game-cell" data-x="2" data-y="5">
-            <img src="./assets/counter-red-large.svg" alt="">
+            <img src="./assets/counter-red-large.svg" alt="" />
           </div>
           <div class="game-cell" data-x="3" data-y="5">
-            <img src="./assets/counter-red-large.svg" alt="">
+            <img src="./assets/counter-red-large.svg" alt="" />
           </div>
           <div class="game-cell" data-x="4" data-y="5">
-            <img src="./assets/counter-red-large.svg" alt="">
+            <img src="./assets/counter-red-large.svg" alt="" />
           </div>
           <div class="game-cell" data-x="5" data-y="5">
-            <img src="./assets/counter-red-large.svg" alt="">
+            <img src="./assets/counter-red-large.svg" alt="" />
           </div>
           <div class="game-cell" data-x="6" data-y="5">
-            <img src="./assets/counter-red-large.svg" alt="">
+            <img src="./assets/counter-red-large.svg" alt="" />
           </div>
         </div>
+      </div>
     </main>
 
     <script src="assets/js/app.js"></script>

@@ -1,6 +1,13 @@
+const $mainMenu = document.querySelector('.main-menu')
+const $gameButton = document.querySelectorAll('.game-button')
+const $gameRulesButton = document.querySelector('.game-rules-button')
+const $gameRules = document.querySelector('.game-rules-wrapper')
+const $validateRules = document.querySelector('.icon-check')
 const $gameCirclesCells = document.querySelectorAll(".game-cell");
 const $gameBoard = document.querySelector(".game-board");
-
+const $gameBoardContainer = document.querySelector('.game-board-wrapper')
+const $menu = document.querySelector(".menu")
+const $restart = document.querySelector('.restart')
 const $gameIconPlayer = document.querySelector(".icon-player");
 
 console.log($gameBoard);
@@ -62,6 +69,28 @@ const redPlayer = `
     </g>
 </svg>`;
 
+$gameButton.forEach(($gameButtons) => {
+  $gameButtons.addEventListener('click', () => {
+    $mainMenu.classList.add('hidden')
+    $gameBoardContainer.classList.remove('hidden')
+  })
+})
+
+$gameRulesButton.addEventListener('click', () => {
+  $mainMenu.classList.add('hidden')
+  $gameRules.classList.remove('hidden')
+
+  $validateRules.addEventListener('click', () => {
+    $mainMenu.classList.remove('hidden')
+    $gameRules.classList.add('hidden')
+  })
+})
+
+$menu.addEventListener('click', () => {
+  $mainMenu.classList.remove('hidden')
+  $gameBoardContainer.classList.add('hidden')
+})
+
 function resetGameGrid() {
   $gameCirclesCells.forEach(($resetCells) => {
     $resetCells.innerHTML = "";
@@ -70,6 +99,40 @@ function resetGameGrid() {
 
 resetGameGrid();
 
+$restart.addEventListener('click', () => {
+  resetGameGrid()
+})
+
+function checkWin() {
+  console.log(gameBoard)
+
+  // Première type de victoire
+  if (gameBoard[5][0] === gameBoard[4][0] && gameBoard[4][0] === gameBoard[3][0] && gameBoard[3][0] === gameBoard[2][0]) {
+    // console.log("Victoire")
+  }
+
+  console.log(gameBoard[5][0]) // r
+  console.log(gameBoard[4][0]) // r
+  console.log(gameBoard[3][0]) // r
+  console.log(gameBoard[2][0]) // r
+
+  // Deuxième type
+  console.log(gameBoard[5][1]) // y
+  console.log(gameBoard[4][1]) // r
+  console.log(gameBoard[3][1]) // r
+  console.log(gameBoard[2][1]) // r
+  console.log(gameBoard[1][1]) // r
+
+  // Troisième type
+  console.log(gameBoard[5][2]) // y
+  console.log(gameBoard[4][2]) // y
+  console.log(gameBoard[3][2]) // r
+  console.log(gameBoard[2][2]) // r
+  console.log(gameBoard[1][2]) // r
+  console.log(gameBoard[0][2]) // r
+}
+
+
 $gameCirclesCells.forEach(($gameCell) => {
   $gameCell.addEventListener("click", () => {
     const dataX = $gameCell.getAttribute("data-x");
@@ -77,7 +140,7 @@ $gameCirclesCells.forEach(($gameCell) => {
     for (let i = 5; i >= 0; i--) {
       if (gameBoard[i][dataX] === "") {
         console.log("C'est vide");
-        gameBoard[i][dataX] = currentPlayer;
+        gameBoard[i][dataX] = currentPlayer; 
 
         if (currentPlayer === "red") {
           const selectedGameCell = document.querySelector(`.game-cell[data-y="${i}"][data-x="${dataX}"]`)
@@ -95,12 +158,5 @@ $gameCirclesCells.forEach(($gameCell) => {
         console.log("Ce n'est pas vide");
       }
     }
-
-    // gameBoard[dataX][dataY] = currentPlayer;
-    // console.log(gameBoard);
-
-    // if ($gameCell.hasChildNodes() === false) {
-
-    // }
   });
 });
