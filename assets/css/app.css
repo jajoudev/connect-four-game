@@ -435,3 +435,53 @@ body {
   left: 548px;
   top: 460px;
 }
+
+.timer-player-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative; 
+  height: 150px;
+  width: 192px; 
+}
+
+.timer-player-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.timer-player-container img {
+  width: auto; 
+  height: 100%; 
+  max-width: 100%; 
+}
+
+.turn-player,
+.timer {
+  position: absolute;
+  color: white;
+  font-weight: bold;
+}
+
+.turn-player {
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-transform: uppercase;
+  font-size: 16px;
+}
+
+.timer {
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 56px;
+}
+
+.cpu-timer {
+  background-color: var(--golden-tanoi);
+}
