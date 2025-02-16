@@ -192,12 +192,10 @@ function startTimer() {
 }
 
 function switchPlayer() {
-  selectedGameCell.innerHTML = redPlayer;
   currentPlayer = "yellow";
   $timerBackground.src = timerCpuBgc;
   $timerTitle.textContent = "CPU's Turn";
 
-  selectedGameCell.innerHTML = yellowPlayer;
   $timerBackground.src = timerPlayerBgc;
   $timerTitle.textContent = "Your Turn";
   currentPlayer = "red";
