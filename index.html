@@ -1,76 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>🟡 Connect Four 🔴</title>
-    <link rel="stylesheet" href="assets/css/normalize.css" />
-    <link rel="stylesheet" href="assets/css/reset.css" />
-    <link rel="stylesheet" href="assets/css/app.css" />
-  </head>
-  <body>
-    <main class="main-wrapper">
-      <div class="main-menu">
-        <img src="assets/images/logo.svg" alt="logo" />
 
-        <ul class="main-menu-buttons">
-          <div class="player-cpu-button game-button">
-            <li class="player-cpu">Player vs Cpu</li>
-            <img src="assets/images/player-vs-cpu.svg" alt="" />
-          </div>
-          <div class="player-player-button game-button">
-            <li class="player-player">Player vs Player</li>
-            <img src="assets/images/player-vs-player.svg" />
-          </div>
-          <div class="game-rules-button">
-            <li class="game-rules">Game Rules</li>
-          </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🟡 Connect Four 🔴</title>
+  <link rel="stylesheet" href="assets/css/normalize.css" />
+  <link rel="stylesheet" href="assets/css/reset.css" />
+  <link rel="stylesheet" href="assets/css/app.css" />
+</head>
+
+<body>
+  <main class="main-wrapper">
+    <div class="main-menu">
+      <img src="assets/images/logo.svg" alt="logo" />
+
+      <ul class="main-menu-buttons">
+        <div class="player-cpu-button game-button">
+          <li class="player-cpu">Player vs Cpu</li>
+          <img src="assets/images/player-vs-cpu.svg" alt="" />
+        </div>
+        <div class="player-player-button game-button">
+          <li class="player-player">Player vs Player</li>
+          <img src="assets/images/player-vs-player.svg" />
+        </div>
+        <div class="game-rules-button">
+          <li class="game-rules">Game Rules</li>
+        </div>
+      </ul>
+    </div>
+    <div class="game-rules-wrapper hidden">
+      <h1 class="game-rules-title">Rules</h1>
+      <div class="game-rules-context">
+        <div class="game-rules-objective">
+          <h2 class="game-rules-second-title">Objective</h2>
+          <p class="game-rules-description">
+            Be the first player to connect 4 of the same colored discs in a
+            row (either vertically, horizontally, or diagonally).
+          </p>
+        </div>
+        <div class="how-to-play">
+          <h2 class="game-rules-second-title">How to play</h2>
+          <ol class="game-rules-list">
+            <li>Red goes first in the first game.</li>
+            <li>
+              Players must alternate turns, and only one disc can be dropped
+              in each turn.
+            </li>
+            <li>The game ends when there is a 4-in-a-row or a stalemate.</li>
+            <li>
+              The starter of the previous game goes second on <br />
+              the next game.
+            </li>
+          </ol>
+          <img class="icon-check" src="assets/images/icon-check.svg" alt="" />
+        </div>
+      </div>
+    </div>
+    <div class="game-board-wrapper hidden">
+      <div class="game-board-navigation">
+        <ul>
+          <li class="menu">Menu</li>
+          <li><img src="assets/images/logo.svg" alt="" /></li>
+          <li class="restart">Restart</li>
         </ul>
       </div>
-      <div class="game-rules-wrapper hidden">
-        <h1 class="game-rules-title">Rules</h1>
-        <div class="game-rules-context">
-          <div class="game-rules-objective">
-            <h2 class="game-rules-second-title">Objective</h2>
-            <p class="game-rules-description">
-              Be the first player to connect 4 of the same colored discs in a
-              row (either vertically, horizontally, or diagonally).
-            </p>
-          </div>
-          <div class="how-to-play">
-            <h2 class="game-rules-second-title">How to play</h2>
-            <ol class="game-rules-list">
-              <li>Red goes first in the first game.</li>
-              <li>
-                Players must alternate turns, and only one disc can be dropped
-                in each turn.
-              </li>
-              <li>The game ends when there is a 4-in-a-row or a stalemate.</li>
-              <li>
-                The starter of the previous game goes second on <br />
-                the next game.
-              </li>
-            </ol>
-            <img class="icon-check" src="assets/images/icon-check.svg" alt="" />
-          </div>
+      <div class="game-board-container">
+        <div class="player-card">
+          <img src="assets/images/you.svg" alt="">
+          <p class="player">You</p>
+          <span class="points">0</span>
         </div>
-      </div>
-      <div class="game-board-wrapper hidden">
-        <div class="game-board-navigation">
-          <ul>
-            <li class="menu">Menu</li>
-            <li><img src="assets/images/logo.svg" alt="" /></li>
-            <li class="restart">Restart</li>
-          </ul>
-        </div>
-        <img src="assets/images/marker-red.svg">
+
+        <!-- <img src="assets/images/marker-red.svg"> -->
         <div class="game-board">
           <img src="./assets/images/board-layer-white-large.svg" alt="" />
-          <img
-            class="game-board-black"
-            src="./assets/images/board-layer-black-large.svg"
-            alt=""
-          />
+          <img class="game-board-black" src="./assets/images/board-layer-black-large.svg" alt="" />
 
           <!-- First row -->
           <div class="game-cell" data-x="0" data-y="0">
@@ -210,29 +215,49 @@
             <img src="./assets/counter-red-large.svg" alt="" />
           </div>
         </div>
-        <div class="timer-player-wrapper">
-          <div class="timer-player-container">
-            <img class="background-player" src="./assets/images/turn-background-red.svg" alt="">
-            <p class="turn-player">Your turn</p>
-            <span class="timer">30s</span>
-          </div> 
-        </div>
-        <div class="pause-menu">
-          <ul class="pause-menu-buttons">
-            <div class="continue-game-button pause-menu-button">
-              <li class="continue-game">Continue game</li>
-            </div>
-            <div class="restart-game-button pause-menu-button">
-              <li class="restart-game">Restart</li>
-            </div>
-            <div class="quit-game-button pause-menu-button">
-              <li class="quit-game">Quit game</li>
-            </div>
-          </ul>
+        <div class="cpu-card">
+          <img src="assets/images/cpu.svg" alt="">
+          <p class="cpu">CPU</p>
+          <span class="points">0</span>
         </div>
       </div>
-    </main>
+      <div class="timer-player-wrapper">
+        <div class="timer-player-container">
+          <img class="background-player" src="./assets/images/turn-background-red.svg" alt="">
+          <p class="turn-player">Your turn</p>
+          <span class="timer">30s</span>
+        </div>
+      </div>
+      <div class="win-player-wrapper hidden">
+        <div class="win-player-container">
+          <p class="winner">Yellow</p>
+          <span class="winner-win">Wins</span>
+          <p class="winner-play-again">Play Again</p>
+        </div>
+      </div>
+      <div class="pause-menu-overlay hidden">
+        <div class="pause-menu-wrapper">
+          <div class="pause-menu-modal">
+            <h2 class="pause-menu-title">Pause</h2>
+            <ul class="pause-menu-buttons">
+              <div class="continue-game-button pause-menu-button">
+                <li class="continue-game">Continue game</li>
+              </div>
+              <div class="restart-game-button pause-menu-button">
+                <li class="restart-game">Restart</li>
+              </div>
+              <div class="quit-game-button pause-menu-button">
+                <li class="quit-game">Quit game</li>
+              </div>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </main>
 
-    <script src="assets/js/app.js"></script>
-  </body>
+  <script src="assets/js/app.js"></script>
+</body>
+
 </html>

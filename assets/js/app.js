@@ -1,23 +1,24 @@
+// Main menu
+const $menu = document.querySelector(".menu")
+const $restart = document.querySelector('.restart')
 const $mainMenu = document.querySelector('.main-menu')
 const $gameButton = document.querySelectorAll('.game-button')
 const $gameRulesButton = document.querySelector('.game-rules-button')
 const $gameRules = document.querySelector('.game-rules-wrapper')
 const $validateRules = document.querySelector('.icon-check')
+
+// Connect 4
 const $gameCirclesCells = document.querySelectorAll(".game-cell");
 const $gameBoard = document.querySelector(".game-board");
 const $gameBoardContainer = document.querySelector('.game-board-wrapper')
-const $menu = document.querySelector(".menu")
-const $restart = document.querySelector('.restart')
 const $gameIconPlayer = document.querySelector(".icon-player");
+const $gamePoints = document.querySelectorAll('.points')
+const $winnerComponent = document.querySelector('.win-player-wrapper')
+console.log($winnerComponent)
+const $winner = document.querySelector('.winner');
+const $playAgain = document.querySelector('.winner-play-again')
 
-// Timer
-const $timerPlayer = document.querySelector('.timer-player-container')
-console.log($timerPlayer)
-const $timerBackground = document.querySelector('.background-player')
-const $timerTitle = document.querySelector('.turn-player')
-const $timer = document.querySelector('.timer')
-console.log($timerBackground)
-
+console.log($gamePoints)
 const yellowPlayer = `
 <svg width="70px" height="75px" viewBox="0 0 70 75" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <title>counter-yellow-large</title>
@@ -64,14 +65,23 @@ const redPlayer = `
     </g>
 </svg>`;
 
+// Timer
+const $timerPlayer = document.querySelector('.timer-player-container')
+const $timerBackground = document.querySelector('.background-player')
+const $timerTitle = document.querySelector('.turn-player')
+const $timer = document.querySelector('.timer')
 const timerCpuBgc = "./assets/images/turn-background-yellow.svg"
 const timerPlayerBgc = "./assets/images/turn-background-red.svg"
 
-console.log($gameBoard);
-console.log($gameCirclesCells);
+// Pause Menu
+const $pauseMenuOverlay = document.querySelector('.pause-menu-overlay')
+const $continueGame = document.querySelector('.continue-game')
+const $restartGame = document.querySelector('.restart-game')
+const $quitGame = document.querySelector('.quit-game')
 
+let timer = 0;
 let currentPlayer = "red";
-let timer;
+let win = false;
 let gameBoard = [
   ["", "", "", "", "", "", ""],
   ["", "", "", "", "", "", ""],
@@ -114,17 +124,17 @@ function resetGameGrid() {
   ];
 
   $gameCirclesCells.forEach(($resetCells) => {
-    $resetCells.innerHTML = "";  
+    $resetCells.innerHTML = "";
   });
 
   currentPlayer = "red";
 
   $timer.textContent = "30";
-  clearInterval(timer); 
-  startTimer(); 
+  clearInterval(timer);
+  startTimer();
 
   $timerBackground.src = timerPlayerBgc;
-  $timerTitle.textContent = "Your Turn"; 
+  $timerTitle.textContent = "Your Turn";
 }
 
 
@@ -133,47 +143,54 @@ $restart.addEventListener('click', () => {
 })
 
 function checkWin() {
-  // Parcours toutes les cases du tableau pour vérifier les conditions de victoire
+  // Parcours toutes les cases du tableau pour les conditions de victoire
   for (let row = 0; row < 6; row++) {
     for (let col = 0; col < 7; col++) {
       let player = gameBoard[row][col];
       if (player === "") continue;  // Ignore les cases vides
 
-      // Vérifier la ligne (horizontal) : vérifie si 4 jetons sont alignés horizontalement
-      if (col + 3 < 7 && 
+      // Vérifie si 4 jetons sont alignés horizontalement
+      if (col + 3 < 7 &&
         player === gameBoard[row][col + 1] &&
         player === gameBoard[row][col + 2] &&
         player === gameBoard[row][col + 3]) {
+        win = true;
         return player;  // Retourne le joueur gagnant (rouge ou jaune)
+
       }
 
-      // Vérifier la colonne (vertical) : vérifie si 4 jetons sont alignés verticalement
+      // Vérifie si 4 jetons sont alignés verticalement
       if (row + 3 < 6 &&
         player === gameBoard[row + 1][col] &&
         player === gameBoard[row + 2][col] &&
         player === gameBoard[row + 3][col]) {
+        win = true;
         return player;
+
       }
 
-      // Vérifier la diagonale descendante : vérifie si 4 jetons sont alignés en diagonale descendante
+      // Vérifie si 4 jetons sont alignés en diagonale descendante
       if (row + 3 < 6 && col + 3 < 7 &&
         player === gameBoard[row + 1][col + 1] &&
         player === gameBoard[row + 2][col + 2] &&
         player === gameBoard[row + 3][col + 3]) {
+        win = true;
         return player;
+
       }
 
-      // Vérifier la diagonale montante : vérifie si 4 jetons sont alignés en diagonale montante
+      // Vérifie si 4 jetons sont alignés en diagonale montante
       if (row - 3 >= 0 && col + 3 < 7 &&
         player === gameBoard[row - 1][col + 1] &&
         player === gameBoard[row - 2][col + 2] &&
         player === gameBoard[row - 3][col + 3]) {
+        win = true;
         return player;
+
       }
     }
   }
-
-  return null; 
+  return null;
 }
 
 
@@ -192,19 +209,23 @@ function startTimer() {
 }
 
 function switchPlayer() {
-  currentPlayer = "yellow";
-  $timerBackground.src = timerCpuBgc;
-  $timerTitle.textContent = "CPU's Turn";
-
-  $timerBackground.src = timerPlayerBgc;
-  $timerTitle.textContent = "Your Turn";
-  currentPlayer = "red";
+  if (currentPlayer === "red") {
+    currentPlayer = "yellow";
+    $timerBackground.src = timerCpuBgc;
+    $timerTitle.textContent = "CPU's Turn";
+  } else {
+    $timerBackground.src = timerPlayerBgc;
+    $timerTitle.textContent = "Your Turn";
+    currentPlayer = "red";
+  }
   startTimer();
 }
+
 
 $gameCirclesCells.forEach(($gameCell) => {
   $gameCell.addEventListener("click", () => {
     const dataX = $gameCell.getAttribute("data-x");
+    if (win) return;
 
     for (let i = 5; i >= 0; i--) {
       if (gameBoard[i][dataX] === "") {
@@ -217,23 +238,37 @@ $gameCirclesCells.forEach(($gameCell) => {
           currentPlayer = "yellow";
           $timerBackground.src = timerCpuBgc;
           $timerTitle.textContent = "CPU's Turn";
+
         } else {
           selectedGameCell.innerHTML = yellowPlayer;
           $timerBackground.src = timerPlayerBgc;
           $timerTitle.textContent = "Your Turn";
           currentPlayer = "red";
         }
-
         clearInterval(timer);
         startTimer();
 
-        const winner = checkWin();
-        if (winner) {
-          alert(`${winner.charAt(0).toUpperCase() + winner.slice(1)} wins!`);
-          resetGameGrid();
-          return;
-        }
+        const winner = checkWin()
 
+        if (winner) {
+          $timerPlayer.classList.add("hidden")
+          $winnerComponent.classList.remove("hidden")
+
+          $playAgain.addEventListener('click', () => {
+            resetGameGrid()
+            $winnerComponent.classList.add('hidden')
+            $timerPlayer.classList.remove('hidden')
+            win = false
+          })
+
+          clearInterval(timer);
+          $winner.textContent = winner
+          if (winner === "red") {
+            $gamePoints[0].textContent = parseInt($gamePoints[0].textContent) + 1
+          } else {
+            $gamePoints[1].textContent = parseInt($gamePoints[1].textContent) + 1
+          }
+        }
         return;
       } else {
         console.log("Ce n'est pas vide");
@@ -242,5 +277,34 @@ $gameCirclesCells.forEach(($gameCell) => {
   });
 });
 
-
 startTimer();
+
+document.addEventListener('keyup', (e) => {
+  if (e.key === "Escape") {
+    $pauseMenuOverlay.classList.toggle('hidden')
+  }
+
+  $continueGame.addEventListener('click', () => {
+    $pauseMenuOverlay.classList.add('hidden')
+  })
+
+  $restartGame.addEventListener('click', () => {
+    $gamePoints.forEach(($resetPoint) => {
+      $resetPoint.textContent = "0";
+    })
+    $pauseMenuOverlay.classList.add('hidden')
+    resetGameGrid()
+  })
+
+  $quitGame.addEventListener('click', () => {
+    $pauseMenuOverlay.classList.add('hidden')
+    $gameBoardContainer.classList.add('hidden')
+    $mainMenu.classList.remove('hidden')
+
+    $gamePoints.forEach(($resetPoint) => {
+      $resetPoint.textContent = "0";
+    })
+    resetGameGrid();
+  })
+
+}) 

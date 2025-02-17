@@ -127,44 +127,44 @@ body {
 }
 
 .game-rules-context {
-    margin-left: 32px;
+  margin-left: 32px;
 }
 
 .game-rules-second-title {
-    margin-bottom: 16px;
-    text-transform: uppercase;
-    color: var(--electric-violet);
-    font-size: 20px;    
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  color: var(--electric-violet);
+  font-size: 20px;
 }
 
 .game-rules-description {
-    opacity: 0.6611;
-    font-weight: 500;
-    font-size: 16px;
-    margin-bottom: 32px;
+  opacity: 0.6611;
+  font-weight: 500;
+  font-size: 16px;
+  margin-bottom: 32px;
 }
 
 .game-rules-list {
-    padding-left: 0px;
-    margin-left: 16px;
-    opacity: 0.6611;
-    font-weight: 500;
+  padding-left: 0px;
+  margin-left: 16px;
+  opacity: 0.6611;
+  font-weight: 500;
 }
 
 .game-rules-list::marker {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .game-rules-list li {
-    margin-top: 8px;
-    width: 90%;
+  margin-top: 8px;
+  width: 90%;
 }
 
 .icon-check {
-    position: absolute;
-    left: 190px;
-    bottom: -40px;
-    cursor: pointer;
+  position: absolute;
+  left: 190px;
+  bottom: -40px;
+  cursor: pointer;
 }
 
 .game-board {
@@ -176,29 +176,70 @@ body {
 }
 
 .game-board-navigation {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .game-board-navigation ul {
-    display: flex;
-    list-style: none;
-    padding-left: 0px;
-    align-items: center;
-    justify-content: center;
-    gap: 96px;
-    margin-bottom: 20px;
+  display: flex;
+  list-style: none;
+  padding-left: 0px;
+  align-items: center;
+  justify-content: center;
+  gap: 96px;
+  margin-bottom: 20px;
 }
 
-.menu, .restart {
-    border-radius: 20px;
-    background-color: var(--purple-heart);
-    color: white;
-    text-transform: uppercase;
-    font-weight: 700;
-    font-size: 16px;
-    cursor: pointer;
+.game-board-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 64px;
+
+}
+
+.cpu-card,
+.player-card {
+  background-color: white;
+  width: 142px;
+  height: 160px;
+  border-radius: 20px;
+  border: 4px solid var(--black);
+
+}
+
+.cpu, .player{
+  position: relative;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.cpu-card img, .player-card img {
+  position: relative;
+  top: -28px;
+  left: 36px;
+} 
+
+.points {
+  text-align: center;
+  font-size: 56px;
+  margin-left: 50px;
+}
+
+.menu,
+.restart {
+  border-radius: 20px;
+  background-color: var(--purple-heart);
+  color: white;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
 }
 
 .game-board-black {
@@ -440,24 +481,13 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative; 
+  position: relative;
   height: 150px;
-  width: 192px; 
 }
 
 .timer-player-container {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.timer-player-container img {
-  width: auto; 
-  height: 100%; 
-  max-width: 100%; 
+  position: absolute;
+  top: -40px;
 }
 
 .turn-player,
@@ -486,7 +516,67 @@ body {
   background-color: var(--golden-tanoi);
 }
 
-.pause-menu {
+.win-player-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.win-player-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  flex-direction: column;
+  width: 285px;
+  height: 160px;
+  background-color: white;
+  border-radius: 20px;
+  border: 4px solid var(--black);
+  position: absolute;
+  top: -160px;
+}
+
+.winner {
+  margin-top: 20px;
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.winner-win {
+  font-size: 56px;
+  font-weight: 700;
+  text-transform: uppercase;
+  border-radius: 20px;
+}
+
+.winner-play-again {
+  background-color: var(--purple-heart);
+  color: white;
+  padding: 10px 20px 10px 22px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.pause-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; 
+}
+
+.pause-menu-wrapper {
   background-color: var(--electric-violet);
   display: flex;
   flex-direction: column;
@@ -496,12 +586,20 @@ body {
   border: 4px solid var(--black);
   width: 480px;
   height: 537px;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.pause-menu-title {
+  font-size: 56px;
+  color: white;
+  text-transform: uppercase;
+  margin-bottom: 56px;
+  text-align: center;
 }
 
 .pause-menu-buttons {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   width: 100%;
 }
@@ -519,40 +617,30 @@ body {
   border-radius: 20px;
 }
 
-.continue-game-button{
-  background-color: var(--brink-pink);
+.continue-game-button {
+  background-color: var(--white);
   border: 4px solid var(--black);
-  color: var(--white);
-  text-transform: uppercase;
 }
 
 .restart-game-button {
-  background-color: var(--golden-tanoi);
+  background-color: var(--white);
   border: 4px solid var(--black);
   margin-top: 14px;
-  color: var(--black);
-  text-transform: uppercase;
+
 }
 
 .quit-game-button {
   background-color: var(--brink-pink);
   border-radius: 20px;
   border: 4px solid var(--black);
-  margin-right: 28px;
   margin-top: 14px;
-  text-transform: uppercase;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   font-size: 24px;
   font-weight: 700;
   padding: 12px;
   margin-right: 28px;
   cursor: pointer;
-  width: 100%;
   border-radius: 20px;
   color: white;
-  text-align: center;
 }
 
 .restart-game,
@@ -560,4 +648,7 @@ body {
 .quit-game {
   padding-left: 0px;
   list-style-type: none;
+  margin-left: auto;
+  margin-right: auto;
+  text-transform: uppercase;
 }
