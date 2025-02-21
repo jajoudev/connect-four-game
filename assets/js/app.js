@@ -14,13 +14,8 @@ const $gameBoardContainer = document.querySelector('.game-board-wrapper')
 const $gameIconPlayer = document.querySelector(".icon-player");
 const $gamePoints = document.querySelectorAll('.points')
 const $winnerComponent = document.querySelector('.win-player-wrapper')
-console.log($winnerComponent)
 const $winner = document.querySelector('.winner');
 const $playAgain = document.querySelector('.winner-play-again')
-console.log($playAgain)
-console.log($gamePoints)
-
-console.log($gamePoints)
 const yellowPlayer = `
 <svg width="70px" height="75px" viewBox="0 0 70 75" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <title>counter-yellow-large</title>
@@ -43,7 +38,6 @@ const yellowPlayer = `
         </g>
     </g>
 </svg>`;
-
 const redPlayer = `
 <svg width="70px" height="75px" viewBox="0 0 70 75" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <title>counter-red-large</title>
@@ -281,8 +275,6 @@ $gameCirclesCells.forEach(($gameCell) => {
           }
         }
         return;
-      } else {
-        console.log("Ce n'est pas vide");
       }
     }
   });
