@@ -7,7 +7,7 @@ const $gameRulesButton = document.querySelector('.game-rules-button')
 const $gameRules = document.querySelector('.game-rules-wrapper')
 const $validateRules = document.querySelector('.icon-check')
 
-// Connect 4
+// Le jeu
 const $gameCirclesCells = document.querySelectorAll(".game-cell");
 const $gameBoard = document.querySelector(".game-board");
 const $gameBoardContainer = document.querySelector('.game-board-wrapper')
@@ -82,6 +82,7 @@ const $quitGame = document.querySelector('.quit-game')
 let timer = 0;
 let currentPlayer = "red";
 let win = false;
+
 let gameBoard = [
   ["", "", "", "", "", "", ""],
   ["", "", "", "", "", "", ""],
@@ -112,7 +113,7 @@ $menu.addEventListener('click', () => {
   $mainMenu.classList.remove('hidden')
   $gameBoardContainer.classList.add('hidden')
 })
-
+// Je reset tout mon gamebaord avec timer
 function resetGameGrid() {
   gameBoard = [
     ["", "", "", "", "", "", ""],
@@ -193,21 +194,25 @@ function checkWin() {
   return null;
 }
 
-
+// Fonction pour commencer le timer
 function startTimer() {
   let timeLeft = 30;
   $timer.textContent = `${timeLeft}`;
 
+  // Je dis que mon timer fasse un décompte de 30 à 0s
   timer = setInterval(() => {
     timeLeft--;
     $timer.textContent = `${timeLeft}`;
+    // Si le timer est strictement inférieur ou égal à 0 je change de joueur et j'efface mon timer pour qu'il redevient à 0 
     if (timeLeft <= 0) {
       clearInterval(timer)
       switchPlayer()
     }
+    // Je met un décompte de 30s
   }, 1000)
 }
 
+// Fonction pour change de joueur
 function switchPlayer() {
   if (currentPlayer === "red") {
     currentPlayer = "yellow";
@@ -221,11 +226,13 @@ function switchPlayer() {
   startTimer();
 }
 
-
+// Fonction de tout mes p'tits cercles dans mon gameboard
 $gameCirclesCells.forEach(($gameCell) => {
   $gameCell.addEventListener("click", () => {
     const dataX = $gameCell.getAttribute("data-x");
-    if (win) return;
+    if (win) {
+      return;
+    }
 
     for (let i = 5; i >= 0; i--) {
       if (gameBoard[i][dataX] === "") {
@@ -250,6 +257,7 @@ $gameCirclesCells.forEach(($gameCell) => {
 
         const winner = checkWin()
 
+        // Affiche l'élément si on veut recommencer à jouer ou non
         if (winner) {
           $timerPlayer.classList.add("hidden")
           $winnerComponent.classList.remove("hidden")
@@ -261,8 +269,9 @@ $gameCirclesCells.forEach(($gameCell) => {
             win = false
           })
 
-          clearInterval(timer);
+          learInterval(timer);
           $winner.textContent = winner
+          // J'incrémente de 1 à chaque win (si c'est le jaune ou le rouge)
           if (winner === "red") {
             $gamePoints[0].textContent = parseInt($gamePoints[0].textContent) + 1
           } else {
@@ -279,6 +288,7 @@ $gameCirclesCells.forEach(($gameCell) => {
 
 startTimer();
 
+// Mon menu pause
 document.addEventListener('keyup', (e) => {
   if (e.key === "Escape") {
     $pauseMenuOverlay.classList.toggle('hidden')
