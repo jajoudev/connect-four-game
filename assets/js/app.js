@@ -17,6 +17,8 @@ const $winnerComponent = document.querySelector('.win-player-wrapper')
 console.log($winnerComponent)
 const $winner = document.querySelector('.winner');
 const $playAgain = document.querySelector('.winner-play-again')
+console.log($playAgain)
+console.log($gamePoints)
 
 console.log($gamePoints)
 const yellowPlayer = `
@@ -269,7 +271,7 @@ $gameCirclesCells.forEach(($gameCell) => {
             win = false
           })
 
-          learInterval(timer);
+          clearInterval(timer);
           $winner.textContent = winner
           // J'incrémente de 1 à chaque win (si c'est le jaune ou le rouge)
           if (winner === "red") {
